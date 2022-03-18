@@ -44,8 +44,8 @@
             background-size: cover;
         }
         @endisset @font-face {
-            font-family: MarkingPen;
-            src: url('/font/Marking Pen.ttf');
+            font-family: 'Montserrat', sans-serif;
+            src: url('/font/Montserrat-Regular.ttf');
         }
     </style>
 </head>
