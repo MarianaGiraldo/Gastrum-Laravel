@@ -2,7 +2,6 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Str;
@@ -19,13 +18,13 @@ class UserSeeder extends Seeder
         $users = User::factory(10)->create();
         foreach ($users as $user){
             if ($user->is_admin) {
-               // $user->assignRole('Admin');
+                $user->assignRole('Admin');
             }else {
-                //$user->assignRole('Vendedor');
+                $user->assignRole('Employee');
             };
         };
 
-        $userAdmin = User::Create([
+        User::Create([
             'name' => 'Mariana Giraldo',
             'email' => 'mgiraldo594@misena.edu.co',
             'email_verified_at' => now(),
@@ -33,7 +32,6 @@ class UserSeeder extends Seeder
             'remember_token' => Str::random(10),
             'is_admin' => true,
             'hours_worked' => random_int(10, 120)
-        ]);
-        //$userAdmin->assignRole('Admin');
+        ])->assignRole('Admin');
     }
 }

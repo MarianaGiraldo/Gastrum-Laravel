@@ -3,9 +3,15 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\User;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -13,7 +19,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        return view('users.index', ['users' => User::where('is_admin', 0)->get()]);
     }
 
     /**
@@ -23,7 +29,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create', ['users' => User::all()]);
     }
 
     /**
@@ -45,7 +51,8 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('users.show', ['user' => $user]);
     }
 
     /**
@@ -79,6 +86,13 @@ class UserController extends Controller
      */
     public function destroy($id)
     {
-        //
+        User::destroy($id);
+        return redirect('/users');
+    }
+
+    public function drop($id)
+    {
+        $dropUser = User::findOrFail($id);
+        return view('users.drop', ['dropUser' => $dropUser]);
     }
 }

@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
-use Spatie\Permission\Models\Role;
 
 class PermissionSeeder extends Seeder
 {
@@ -29,8 +27,8 @@ class PermissionSeeder extends Seeder
     {
         return [
             'index',
-            'usuarios.index',
-            'usuarios.show',
+            'users.index',
+            'users.show',
             'payroll.show'
         ];
     }
@@ -44,14 +42,10 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         foreach ($this->adminPermissions() as $permission) {
-            if(in_array($permission, $this->employeePermissions())){
-                Permission::create(['name' => $permission])->syncRoles(['Admin', 'Employee']);
-            }
-            else{
-                Permission::create(['name' => $permission])->assignRole('Admin');
-            }
-
+            Permission::create(['name' => $permission]);
         }
+
+
 
     }
 }

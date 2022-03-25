@@ -1,21 +1,38 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html>
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Login') }}</div>
+<head>
+    <meta charset="utf-8">
+    <title>Register</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="colorlib.com">
 
-                <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
-                        @csrf
+    <!-- MATERIAL DESIGN ICONIC FONT -->
+    <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
 
-                        <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+    <!-- STYLE CSS -->
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+</head>
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+<body>
+    <div class="wrapper">
+        <form method="POST" action="{{ route('login') }}">
+            @csrf
+            <h2></h2>
+            <section>
+                <div class="inner">
+                    <div class="image-holder">
+                        <img src="{{ asset('images/form-wizard-1.jpg') }}" alt="">
+                    </div>
+                    <div class="form-content">
+                        <div class="form-header">
+                            <h3>{{ __('Login') }}</h3>
+                        </div>
+                        <p>Please fill with your details</p>
+                        <br/>
+                        <div class="form-row">
+                            <div class="form-holder">
+                                <input placeholder="Your Email" id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -24,12 +41,9 @@
                                 @enderror
                             </div>
                         </div>
-
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                        <div class="form-row">
+                            <div class="form-holder">
+                                <input placeholder="Password" id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -37,10 +51,7 @@
                                     </span>
                                 @enderror
                             </div>
-                        </div>
-
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
+                            <div class="form-holder">
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
 
@@ -50,7 +61,6 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
@@ -64,10 +74,18 @@
                                 @endif
                             </div>
                         </div>
-                    </form>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </section>
+        </form>
     </div>
-</div>
-@endsection
+
+    <!-- JQUERY -->
+    <script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
+
+    <!-- JQUERY STEP -->
+    <script src="{{ asset('js/jquery.steps.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+</body>
+
+</html>
