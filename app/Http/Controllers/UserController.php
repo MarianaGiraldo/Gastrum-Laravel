@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Contracts\View\View;
 use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Response;
+use Illuminate\Routing\Redirector;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -11,11 +15,11 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-    
+
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function index()
     {
@@ -25,29 +29,38 @@ class UserController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function create()
     {
-        return view('users.create', ['users' => User::all()]);
+        return view('users.form');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @return Response
      */
     public function store(Request $request)
     {
-        //
+        $newUser = new User();
+        $newUser ->name = $request->get('name');
+        $newUser ->email = $request->get('email');
+        $newUser ->hours_worked = $request->get('hours_worked');
+        $newUser ->category_id = $request->get('category');
+        $newUser ->password = $request->get('password');
+
+        $newUser -> save();
+        $newUser->assignRole('Employee');
+        return redirect('/users');
     }
 
     /**
      * Display the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function show($id)
     {
@@ -59,30 +72,41 @@ class UserController extends Controller
      * Show the form for editing the specified resource.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return View
      */
     public function edit($id)
     {
-        //
+        return view('users.form', ['user' => User::findOrFail($id)]);
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return Redirector
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
-        //
+
+        $userUpdt = User::find($id);
+        $userUpdt ->name = $request->get('name');
+        $userUpdt ->email = $request->get('email');
+        $userUpdt ->hours_worked = $request->get('hours_worked');
+        $userUpdt ->category_id = $request->get('category');
+        if ($request->password != null ) {
+            $userUpdt ->password = Hash::make($request->get('password'));
+        };
+        $userUpdt -> save();
+
+        return redirect('/users');
     }
 
     /**
      * Remove the specified resource from storage.
      *
      * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @return Response
      */
     public function destroy($id)
     {

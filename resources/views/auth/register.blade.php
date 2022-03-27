@@ -5,13 +5,13 @@
     <meta charset="utf-8">
     <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="colorlib.com">
 
     <!-- MATERIAL DESIGN ICONIC FONT -->
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
 
     <!-- STYLE CSS -->
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/util.css') }}" rel="stylesheet">
 </head>
 
 <body>
@@ -77,6 +77,11 @@
                                     {{ __('Register') }}
                                 </button>
                             </div>
+                        </div>
+                        <div class="form-row">
+                            <label class="form-holder">
+                                <p>Already registered? <a href="/login">Login here</a></p>
+                            </label>
                         </div>
                     </div>
                 </div>

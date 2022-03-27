@@ -20,9 +20,9 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->integer('hours_worked');
+            $table->boolean('is_admin')->default(false);
             $table->rememberToken();
             $table->timestamps();
-            $table->boolean('is_admin')->default(false);
         });
     }
 

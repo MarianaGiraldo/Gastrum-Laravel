@@ -29,4 +29,4 @@ Auth::routes();
 Route::resource('/users', UserController::class);
 Route::resource('/payrolls', PayrollController::class);
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/users/{id}/drop', [UserController::class , 'drop' ]);

@@ -9,6 +9,10 @@
   -moz-box-sizing: border-box;
   box-sizing: border-box; }
 
+html {
+    height: 100%;
+}
+
 body {
   font-family: "Muli-Regular";
   font-size: 15px;
@@ -124,9 +128,8 @@ img {
 
 .form-content {
   width: 60%;
-  padding-top: 65px;
-  padding-left: 51px;
-  padding-right: 51px; }
+    padding: 65px 51px 0;
+}
 
 .form-header {
   text-align: center; }

@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class Payroll extends Model
 {
     use HasFactory;
+
+    /**
+     * Get the category that owns the user.
+     */
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
 }

@@ -13,6 +13,7 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
     <script src="{{ asset('js/select2.min.js') }}" defer></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <!-- FontAwesome -->
     <script src="https://kit.fontawesome.com/4ed93febb8.js" crossorigin="anonymous"></script>
@@ -32,6 +33,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/style.css') }}" rel="stylesheet">
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('css/util.css') }}">
@@ -43,10 +45,7 @@
 
     <div class="wrapper d-flex align-items-stretch">
         <div id="sidebar">
-            <!-- <div class="custom-menu"> -->
-            <!-- <button type="button" id="sidebarCollapse" class="btn btn-primary"></button> -->
-            <!-- </div> -->
-            <div class="img bg-wrap text-center py-4" style="background-image: url(images/bg_1.jpg);">
+            <div class="img bg-wrap text-center py-4" style="background-image: url({{ asset('images/bg_1.jpg')}} );">
                 <div class="user-logo">
                     <div class="bg-dark"></div>
                     <h3>{{ config('app.name', 'Gastrum') }}</h3>
@@ -73,6 +72,7 @@
                     <li>
                         @hasrole('Admin')
                             <a href="/users"><span class="fa-solid fa-user-tie mr-3"></span> Employees List</a>
+                            <a href="/payrolls"><span class="fa-solid fa-file-invoice-dollar mr-3"></span> Payroll List</a>
                         @else
                             <a href="/users"><span class="fa-solid fa-user mr-3"></span> Employees List</a>
                         @endhasrole

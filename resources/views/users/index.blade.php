@@ -14,23 +14,34 @@
             </tr>
         </thead>
         <tbody>
-                <tr>
-                    @foreach($users as $user)
-                        <tr class="table-light">
-                            <td >{{$user->id}}</td>
-                            <td >{{$user->name}} </td>
-                            <td >{{$user->email}} </td>
-                            <td >{{$user->hours_worked}} </td>
-                            <td><a href="/users/{{$user->id}}" class="btn-small btn-success rounded-pill">View User</a></td>
-                            <td><a href="#" class="btn btn-warning" style="border-radius: 13px;"><img src="https://img.icons8.com/ios/50/000000/pencil.png" width="25px" /></a></td>
-                            <td><a href="/users/{{$user->id}}/drop" class="btn-small btn-danger rounded-pill"><img src="https://img.icons8.com/ios/50/000000/delete--v1.png" width="25px" /></a></td>
-                        </tr>
-                    @endforeach
-
-                </tr>
+                @foreach($users as $user)
+                    <tr class="table-light">
+                        <td >{{$user->id}}</td>
+                        <td >{{$user->name}} </td>
+                        <td >{{$user->email}} </td>
+                        <td >{{$user->hours_worked}} </td>
+                        <td><a href="/users/{{$user->id}}" class="btn-small btn-success rounded-pill">View User</a></td>
+                        @can('users.edit')
+                        <td><a href="/users/{{$user->id}}" class="btn btn-warning rounded-pill py-0 px-3 text-center"><i class="fa-solid fa-pen-to-square" style="color: white;"></i></a></td>
+                        <td><a href="/users/{{$user->id}}/drop" class="btn-small btn-danger rounded-pill py-0 px-3 text-center"><i class="fa-solid fa-trash-can"></i></a></td>
+                        @endcan
+                    </tr>
+                @endforeach
         </tbody>
     </table>
 </div>
+@can('users.create')
+<div class="fixed-action-btn">
+    <a href="/users/create" class="btn-floating btn-large teal lighten-2">
+        <i class="large material-icons">add</i>
+    </a>
+</div>
+    <script>
+        $(document).ready(function(){
+            $('.fixed-action-btn').floatingActionButton();
+        });
+    </script>
+@endcan
 @else
 <br><br>
 @include('components.no_auth_alert')

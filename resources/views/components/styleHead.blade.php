@@ -1,19 +1,17 @@
 <style>
-    @isset($bg) .parallax-index {
-            background-image: url('/images/{{ $bg }}');
-            width: 100%;
-            height: 100vh;
-            background-attachment: fixed;
-            background-size: cover;
-        }
-
-    @endisset @font-face {
+    @font-face {
         font-family: 'Montserrat', sans-serif;
         src: url('/font/Montserrat-Regular.ttf');
     }
 
-    body {
+    html, body {
         font-family: 'Nunito', sans-serif;
+        min-height: 100%;
+    }
+    * {
+        margin: 0px;
+        padding: 0px;
+        box-sizing: border-box;
     }
 
     /*!
@@ -12074,11 +12072,11 @@
     }
 
     .bg-show {
-        background: #b3d7ff
+        background: #205691
     }
 
     .skill-block {
-        width: 30%
+        width: 80%
     }
 
     @media (min-width: 991px) and (max-width:1200px) {

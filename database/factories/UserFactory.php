@@ -24,7 +24,8 @@ class UserFactory extends Factory
             'password' => bcrypt('change_me'), // password
             'remember_token' => Str::random(10),
             'is_admin' => $this->faker->boolean(),
-            'hours_worked' => random_int(10, 120)
+            'hours_worked' => random_int(10, 120),
+            'category_id' => random_int(1, 3)
         ];
     }
 

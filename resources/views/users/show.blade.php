@@ -18,27 +18,23 @@
                 <div class="col-md-9 col-lg-9">
                     <div class="d-flex flex-column">
                         <div class="d-flex flex-row justify-content-between align-items-center p-5 bg-dark text-white">
-                            <h3 class="display-5 text-white">{{$user->name}}</h3><i class="fa fa-facebook"></i><i class="fa fa-google"></i><i class="fa fa-youtube-play"></i><i class="fa fa-dribbble"></i><i class="fa fa-linkedin"></i>
+                            <h3 class="display-5 text-white">{{$user->name}}</h3>
                         </div>
                         <div class="p-3 bg-show">
-                            <h6 class="text-white">Employee</h6>
+                            <h6 class="text-white">{{$user->email}}</h6>
                         </div>
                         <div class="d-flex flex-row text-white">
-                            <div class="p-4 bg-primary text-center skill-block">
-                                <p>{{$user->email}}</p>
-                                <h6>Email</h6>
+                            <div class="p-4 bg-warning text-center skill-block">
+                                <h4>Employee</h4>
+                                <h6>Type</h6>
                             </div>
                             <div class="p-3 bg-success text-center skill-block">
-                                <h4>70%</h4>
-                                <h6>Jquery</h6>
+                                <h4>{{$user->hours_worked}}</h4>
+                                <h6>Worked Hours</h6>
                             </div>
-                            <div class="p-3 bg-warning text-center skill-block">
-                                <h4>80%</h4>
-                                <h6>HTML</h6>
-                            </div>
-                            <div class="p-3 bg-danger text-center skill-block">
-                                <h4>75%</h4>
-                                <h6>PHP</h6>
+                            <div class="p-3 bg-primary text-center skill-block">
+                                <h4>{{$user->category->type}}</h4>
+                                <h6>Category</h6>
                             </div>
                         </div>
                     </div>
@@ -46,9 +42,34 @@
             </div>
         </div>
 
-    <td><a href="/payroll/{{$user->id}}" class="btn-small btn-success rounded-pill">Generate Payroll</a></td>
-
-</div>
+        <form action="/payrolls" method="post">
+            @csrf
+            <input type="hidden" name="user_id" value="{{$user->id}}">
+            <button type="submit" class="btn-small btn-success rounded-pill">Generate Payroll</button>
+        </form>
+        <br/><br/>
+    </div>
+    <div class="fixed-action-btn">
+        <form action="/payrolls" method="post">
+            @csrf
+            <input type="hidden" name="user_id" value="{{$user->id}}">
+            <button type="submit" class="btn-floating blue"><i class="fa-solid fa-file-invoice-dollar"></i></button>
+        </form>
+        @can('users.edit')
+        <ul>
+            <li><a href="/users/{{$user->id}}/drop" class="btn-floating red"><i class="material-icons">delete_forever</i></a></li>
+            <li>
+                <a href="/users/{{$user->id}}/edit" class="btn-floating btn-large teal lighten-2"><i class="large material-icons">edit</i></a>
+            </li>
+            <li><a class="btn-floating green"><i class="material-icons">add</i></a></li>
+        </ul>
+        @endcan
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('.fixed-action-btn').floatingActionButton();
+        });
+    </script>
 @else
 @include('components.no_auth_alert')
 @endcan

@@ -3,9 +3,8 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Register</title>
+    <title>LOgin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="colorlib.com">
 
     <!-- MATERIAL DESIGN ICONIC FONT -->
     <link rel="stylesheet" href="fonts/material-design-iconic-font/css/material-design-iconic-font.css">
@@ -61,7 +60,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="row mb-0">
+                        <div class="form-row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Login') }}
@@ -74,6 +73,12 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-row">
+                            <label class="form-holder">
+                                <p>Not registered yet? <a href="/register">Register here</a></p>
+                            </label>
+                        </div>
+
                     </div>
                 </div>
             </section>

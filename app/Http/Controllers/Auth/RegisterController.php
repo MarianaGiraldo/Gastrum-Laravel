@@ -68,6 +68,8 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-        ]);
+            'hours_worked'=> 0,
+            'category_id' => 1
+        ])-> assignRole('Employee');
     }
 }

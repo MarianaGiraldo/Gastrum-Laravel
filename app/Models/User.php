@@ -15,6 +15,22 @@ class User extends Authenticatable
     use HasRoles;
 
     /**
+     * Get the payrolls for the category.
+     */
+    public function payrolls()
+    {
+        return $this->hasMany(Payroll::class);
+    }
+
+    /**
+     * Get the category that owns the user.
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
