@@ -6,11 +6,11 @@
 	font-family: "Muli-SemiBold";
 	src: url('../fonts/muli/Muli-SemiBold.ttf');
 }
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
+// * {
+//   -webkit-box-sizing: border-box;
+//   -moz-box-sizing: border-box;
+//   box-sizing: border-box;
+// }
 body {
 	font-family: "Muli-Regular";
 	font-size: 15px;
@@ -138,7 +138,7 @@ img {
 	-webkit-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 	-moz-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 	-ms-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
-	-o-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2); 
+	-o-box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, 0.2);
 }
 .image-holder {
 	width: 40%;
@@ -240,16 +240,16 @@ p {
 	&:focus {
 		border-color: #e9e0cf;
 	}
-	&::-webkit-input-placeholder { 
+	&::-webkit-input-placeholder {
 		color: #999;
 	}
-	&::-moz-placeholder { 
+	&::-moz-placeholder {
 		color: #999;
 	}
-	&:-ms-input-placeholder { 
+	&:-ms-input-placeholder {
 		color: #999;
 	}
-	&:-moz-placeholder { 
+	&:-moz-placeholder {
 		color: #999;
 	}
 }
@@ -446,8 +446,8 @@ textarea.form-control {
 		}
 	}
 }
-@media (max-width: 1199px) { 
-	
+@media (max-width: 1199px) {
+
 }
 @media (max-width: 991px) {
 	.wizard {
@@ -459,7 +459,7 @@ textarea.form-control {
 			object-fit: cover;
 		}
 	}
-	
+
 }
 @media (max-width: 767px) {
 	.inner {

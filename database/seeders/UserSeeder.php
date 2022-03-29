@@ -15,7 +15,7 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $users = User::factory(10)->create();
+        $users = User::factory(20)->create();
         foreach ($users as $user){
             if ($user->is_admin) {
                 $user->assignRole('Admin');
