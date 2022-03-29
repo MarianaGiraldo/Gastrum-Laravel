@@ -11315,3 +11315,7 @@ textarea.form-control-lg {
     display: none !important;
   }
 }
+
+.listTable {
+    overflow-y: auto;
+}

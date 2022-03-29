@@ -22,7 +22,7 @@
                         <td >{{$user->hours_worked}} </td>
                         <td><a href="/users/{{$user->id}}" class="btn-small btn-success rounded-pill">View User</a></td>
                         @can('users.edit')
-                        <td><a href="/users/{{$user->id}}" class="btn btn-warning rounded-pill py-0 px-3 text-center"><i class="fa-solid fa-pen-to-square" style="color: white;"></i></a></td>
+                        <td><a href="/users/{{$user->id}}/edit" class="btn btn-warning rounded-pill py-0 px-3 text-center"><i class="fa-solid fa-pen-to-square" style="color: white;"></i></a></td>
                         <td><a href="/users/{{$user->id}}/drop" class="btn-small btn-danger rounded-pill py-0 px-3 text-center"><i class="fa-solid fa-trash-can"></i></a></td>
                         @endcan
                     </tr>

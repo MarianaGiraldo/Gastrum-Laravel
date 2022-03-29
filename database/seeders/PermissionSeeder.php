@@ -15,6 +15,7 @@ class PermissionSeeder extends Seeder
             'index',
             'users.index',
             'users.show',
+            'users.create',
             'users.edit',
             'users.drop',
             'payroll.index',
